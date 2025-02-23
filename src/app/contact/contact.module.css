@@ -1,0 +1,10 @@
+.inputFieldContainer input:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.inputFieldContainer textarea:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}

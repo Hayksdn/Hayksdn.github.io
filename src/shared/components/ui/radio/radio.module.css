@@ -1,0 +1,23 @@
+.radioOuterColor.selected {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--chakra-colors-primary-black);
+  border-radius: 50%;
+}
+.radioInnerColor.selected {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.radioOuterColor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.radioInnerColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}

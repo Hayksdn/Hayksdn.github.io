@@ -1,0 +1,26 @@
+.navbar a:focus {
+  outline: none;
+}
+.navbar a:hover {
+  text-decoration: none;
+}
+
+.navbar .active {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.profileIcon:hover {
+  background-color: var(--chakra-colors-primary-orange);
+}
+
+.profileIcon:hover svg path {
+  stroke: white;
+}
+
+.activeProfileIcon .profileIcon {
+  background-color: var(--chakra-colors-primary-orange);
+}
+
+.activeProfileIcon .profileIcon svg path {
+  stroke: white;
+}

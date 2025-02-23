@@ -1,0 +1,9 @@
+.sidebar a {
+  color: var(--chakra-colors-primary-black);
+}
+.sidebar a:hover {
+  text-decoration: none;
+}
+.sidebar a:focus {
+  outline: none;
+}

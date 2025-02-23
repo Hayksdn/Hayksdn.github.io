@@ -1,0 +1,25 @@
+.defaultCategory {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  svg {
+    stroke: var(--chakra-colors-primary-black);
+  }
+}
+
+.changedCategory {
+  background-color: var(--chakra-colors-primary-orange);
+  p {
+    color: var(--chakra-colors-primary-white);
+  }
+  svg {
+    stroke: var(--chakra-colors-primary-white);
+  }
+}
+
+.categories {
+  list-style: none;
+}
+
+.separator {
+  border: 0.5px solid rgba(0, 0, 0, 0.3);
+}

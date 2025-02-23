@@ -1,0 +1,12 @@
+.womenIconContainer img {
+  transform: rotateY(180deg);
+}
+.elipse {
+  filter: blur(100px);
+}
+.speakersIconContainer img {
+  transform: scale(2);
+}
+.newArrivalElipse {
+  filter: blur(100px);
+}

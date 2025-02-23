@@ -1,0 +1,18 @@
+.checkbox div {
+  background-color: var(--chakra-colors-primary-grey);
+  border: none;
+}
+
+.checkbox:checked {
+  background-color: var(--chakra-colors-primary-orange);
+}
+
+.checkbox input:checked + div {
+  background-color: var(--chakra-colors-primary-orange);
+}
+
+.inputFieldContainer input:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}

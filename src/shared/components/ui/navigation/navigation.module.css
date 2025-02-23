@@ -1,0 +1,12 @@
+.navigation button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--chakra-colors-primary-grey);
+  cursor: pointer;
+}
+
+.navigation button:first-child {
+  rotate: 180deg;
+}

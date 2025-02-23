@@ -1,0 +1,34 @@
+.tableHeader tr th {
+  color: var(--chakra-colors-primary-black);
+  font-weight: 400;
+  font-size: medium;
+  border: none;
+}
+.tableBody tr td {
+  color: var(--chakra-colors-primary-black);
+  font-weight: 400;
+  font-size: medium;
+  border: none;
+}
+
+.product:hover svg {
+  opacity: 1;
+}
+
+.numberInput div {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  background: none;
+  border-style: none;
+  outline: none;
+  width: 16px;
+  height: 32px;
+}
+
+.numberInput div button {
+  border: none;
+}
+.numberInput div svg {
+  color: var(--chakra-colors-primary-black);
+}

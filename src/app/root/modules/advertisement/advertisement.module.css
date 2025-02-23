@@ -1,0 +1,6 @@
+.advertisement img {
+  transform: rotateY(180deg);
+}
+.elipse {
+  filter: blur(100px);
+}
