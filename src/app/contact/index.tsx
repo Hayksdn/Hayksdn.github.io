@@ -2,7 +2,7 @@ import { useRef } from 'react'
 
 import { BreadCrumb } from '@/shared/components/breadcrumb'
 import { contactInfo } from '@/shared/components/contactData'
-import { CustomContainer } from '@/shared/container'
+import { CustomContainer } from '@/shared/components/layout/container'
 import {
   Box,
   Button,
@@ -33,7 +33,8 @@ export const Contact = () => {
     { id: 'phone', placeholder: 'Your Phone', required: true },
     { id: 'message', placeholder: 'Your Message', required: false },
   ]
-
+  const firstSection=3
+  
   const onSubmit = (data: any) => {
     console.log('Form submitted:', data)
   }
@@ -44,20 +45,20 @@ export const Contact = () => {
       mx='auto'
       display='flex'
       flexDir='column'
-      gap={10}
-      mb={24}
-      mt={20}
+      gap='3rem'
+      mb='5rem'
+      mt='3rem'
     >
       <BreadCrumb />
-      <Flex flexDir='row' gap={6} justify='space-between'>
+      <Flex flexDir='row' gap='1.7rem' justify='space-between'>
         <Flex
-          boxShadow=' 0px 1px 13px 0px #0000000D'
+          boxShadow='0rem 0.0625rem 0.8125rem 0rem #0000000D'
           flexDir='column'
-          gap={6}
-          w='sm'
+          gap='1.375rem'
+          w='24rem'
           h='auto'
-          py={12}
-          pl={10}
+          py='1.75rem'
+          px='1.2rem'
         >
           {contactInfo.map((data, index) => {
             if (data.type === 'Call To Us') {
@@ -65,13 +66,13 @@ export const Contact = () => {
                 <Flex
                   key={index}
                   flexDir='column'
-                  gap={6}
+                  gap='1.7rem'
                   color='var(--chakra-colors-primary-black)'
                 >
-                  <Flex flexDir='row' gap={4} alignItems='center'>
+                  <Flex flexDir='row' gap='1.5rem' alignItems='center'>
                     <Box
-                      w='40px'
-                      h='40px'
+                      w='2.5rem'
+                      h='2.5rem'
                       bg='var(--chakra-colors-primary-orange)'
                       rounded='50%'
                       alignContent='center'
@@ -81,13 +82,13 @@ export const Contact = () => {
                     </Box>
                     <Text fontWeight='medium'>{data.type}</Text>
                   </Flex>
-                  <Flex flexDir='column' gap={6}>
+                  <Flex flexDir='column' gap='1.7rem'>
                     <Text>{data.description}</Text>
                     <Text>{data.phone}</Text>
                   </Flex>
                   <Separator
                     orientation='horizontal'
-                    w='xs'
+                    w='full'
                     size='sm'
                     borderColor='var(--chakra-colors-primary-black)/30'
                     h='auto'
@@ -99,14 +100,14 @@ export const Contact = () => {
                 <Flex
                   key={index}
                   flexDir='column'
-                  gap={6}
+                  gap='1.7rem'
                   color='var(--chakra-colors-primary-black)'
-                  maxW='xs'
+                  maxW='20rem'
                 >
-                  <Flex flexDir='row' gap={4} alignItems='center'>
+                  <Flex flexDir='row' gap='1.7rem' alignItems='center'>
                     <Box
-                      w='40px'
-                      h='40px'
+                      w='2.5rem'
+                      h='2.5rem'
                       bg='var(--chakra-colors-primary-orange)'
                       rounded='50%'
                       alignContent='center'
@@ -116,7 +117,7 @@ export const Contact = () => {
                     </Box>
                     <Text fontWeight='medium'>{data.type}</Text>
                   </Flex>
-                  <Flex flexDir='column' gap={6}>
+                  <Flex flexDir='column' gap='1.7rem'>
                     <Text>{data.responseTime}</Text>
                     {data.emails?.map((email, i) => (
                       <Text key={i}>Email: {email}</Text>
@@ -129,18 +130,22 @@ export const Contact = () => {
         </Flex>
 
         <Flex
-          boxShadow=' 0px 1px 13px 0px #0000000D'
-          py={12}
+          boxShadow='0rem 0.0625rem 0.8125rem 0rem #0000000D'
+          py='1.75rem'
           flexDir='column'
-          gap={8}
-          px={10}
+          gap='0.5rem'
+          px='1.625rem'
         >
           <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-            <Flex flexDir='column' gap={6} className={css.inputFieldContainer}>
-              <Flex flexDir='column' gap={8}>
-                <Flex flexDir='row' gap={4}>
-                  {formFields.slice(0, 3).map((field) => (
-                    <Flex key={field.id} flexDir='column' gap={3}>
+            <Flex
+              flexDir='column'
+              gap='1.75rem'
+              className={css.inputFieldContainer}
+            >
+              <Flex flexDir='column' gap='2rem'>
+                <Flex flexDir='row' gap='1.75rem'>
+                  {formFields.slice(0, firstSection).map((field) => (
+                    <Flex key={field.id} flexDir='column' gap='1.75rem'>
                       <Controller
                         name={field.id}
                         control={control}
@@ -148,8 +153,8 @@ export const Contact = () => {
                         render={({ field: controllerField }) => (
                           <Input
                             bg='var(--chakra-colors-primary-grey)'
-                            h='12'
-                            w='230px'
+                            h='2.75rem'
+                            w='14.375rem'
                             border='none'
                             {...controllerField}
                             placeholder={field.placeholder}
@@ -165,7 +170,7 @@ export const Contact = () => {
                   ))}
                 </Flex>
 
-                {formFields.slice(3).map((field) => (
+                {formFields.slice(firstSection).map((field) => (
                   <Flex key={field.id}>
                     <Controller
                       name={field.id}
@@ -174,8 +179,8 @@ export const Contact = () => {
                       render={({ field: controllerField }) => (
                         <Textarea
                           bg='var(--chakra-colors-primary-grey)'
-                          h='207px'
-                          w='full'
+                          h='12.9375rem'
+                          w='100%'
                           {...controllerField}
                           placeholder={field.placeholder}
                         />

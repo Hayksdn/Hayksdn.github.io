@@ -12,26 +12,26 @@ export const Advertisement = () => {
   ]
 
   return (
-    <Flex bg='var(--chakra-colors-primary-black)' h='500px' pl={14}>
-      <Flex flexDir='column' gap={4} pt={16}>
+    <Flex bg='var(--chakra-colors-primary-black)' h='31.25rem' pl='3.5rem'>
+      <Flex flexDir='column' gap='1rem' pt='4rem'>
         <Text color='var(--chakra-colors-primary-green)' fontWeight='semibold'>
           Categories
         </Text>
         <Text
           fontFamily='Inter'
           fontWeight='semibold'
-          fontSize='5xl'
+          fontSize='2.25rem'
           color='var(--chakra-colors-primary-white)'
-          maxW='420px'
+          maxW='26.25rem'
         >
           Enhance Your Music Experience
         </Text>
-        <Flex flexDir='row' gap={6}>
+        <Flex flexDir='row' gap='1.3rem'>
           {countdownData.map(({ id, value, label }) => (
             <Flex
               key={id}
-              w='64px'
-              h='62px'
+              w='4rem'
+              h='3.875rem'
               bg='var(--chakra-colors-primary-white2)'
               border='none'
               rounded='50%'
@@ -41,7 +41,7 @@ export const Advertisement = () => {
             >
               <Text fontWeight='semibold'>{value}</Text>
               <Text
-                fontSize='xs'
+                fontSize='0.75rem'
                 fontWeight='normal'
                 color='var(--chakra-colors-primary-black)'
               >
@@ -50,16 +50,16 @@ export const Advertisement = () => {
             </Flex>
           ))}
         </Flex>
-        <Button variant='secondary' py={6} px={12}>
+        <Button variant='secondary' py='1.5rem' px='3rem'>
           Buy Now
         </Button>
       </Flex>
 
       <Flex
-        w='568px'
-        h='330px'
+        w='35.5rem'
+        h='20.625rem'
         className={css.advertisement}
-        mt={16}
+        mt='4rem'
         flex={1}
         position='relative'
       >
@@ -78,8 +78,8 @@ export const Advertisement = () => {
           bg='#d9d9d9'
           opacity='0.4'
           rounded='50%'
-          top={8}
-          left={20}
+          top='2rem'
+          left='5rem'
         ></Box>
       </Flex>
     </Flex>

@@ -1,6 +1,6 @@
+import { CustomContainer } from '@/shared/components/layout/container'
 import { Products } from '@/shared/components/products'
 import { Rectangle } from '@/shared/components/ui/rectangle'
-import { CustomContainer } from '@/shared/container'
 import { useCart } from '@/shared/context/Cart/CartContext'
 import { useWishList } from '@/shared/context/wishList/wishListContext'
 import { getUpdatedCartData } from '@/shared/utils/cart'
@@ -31,11 +31,11 @@ export const WishList = () => {
       mx='auto'
       display='flex'
       flexDir='column'
-      gap={10}
-      mb={24}
-      mt={20}
+      gap='3rem'
+      mb='5rem'
+      mt='3rem'
     >
-      <Flex flexDir='column' gap={15}>
+      <Flex flexDir='column' gap='3rem'>
         <Flex flexDir='row' justify='space-between'>
           <Text color='var(--chakra-colors-primary-black)'>
             Wishlist({Object.keys(activeWishListItems)?.length})
@@ -66,19 +66,19 @@ export const WishList = () => {
             return (
               <Card.Root
                 key={id}
-                minW='270px'
+                minW='16.875rem'
                 boxSizing='border-box'
                 flexDir='column'
-                gap={4}
+                gap='1.25rem'
                 border='none'
               >
                 <Flex
                   className={css.product}
-                  w='full'
-                  h='250px'
+                  w='100%'
+                  h='15.625rem'
                   bg='var(--chakra-colors-primary-grey)'
                   rounded='sm'
-                  pt={8}
+                  pt='1.5rem'
                   position='relative'
                 >
                   <Link
@@ -100,14 +100,14 @@ export const WishList = () => {
 
                   <Flex
                     flexDir='column'
-                    gap={2}
+                    gap='1.125rem'
                     position='absolute'
-                    top={2.5}
-                    right={2.5}
+                    top='1.15625rem'
+                    right='1.15625rem'
                   >
                     <Box
                       bg='var(--chakra-colors-primary-white2)'
-                      p={1.5}
+                      p='0.3rem'
                       rounded='full'
                       cursor='pointer'
                       onClick={() => {
@@ -128,16 +128,16 @@ export const WishList = () => {
                   </Flex>
                   {product?.discount && (
                     <Flex
-                      px={3}
-                      py={1}
+                      px='0.6rem'
+                      py='0.3rem'
                       bg='var(--chakra-colors-primary-orange)'
                       position='absolute'
-                      top={4}
-                      left={4}
+                      top='1.25rem'
+                      left='1.25rem'
                       border='none'
                       rounded='sm'
                       color='var(--chakra-colors-primary-white)'
-                      fontSize='sm'
+                      fontSize='0.875rem'
                     >
                       {product?.discount}
                     </Flex>
@@ -167,7 +167,7 @@ export const WishList = () => {
                 </Flex>
 
                 <Card.Footer p={0}>
-                  <Flex flexDir='column' gap={2}>
+                  <Flex flexDir='column' gap='0.3rem'>
                     <Text
                       fontSize='md'
                       color='var(--chakra-colors-primary-black)'
@@ -175,7 +175,7 @@ export const WishList = () => {
                     >
                       {product?.name}
                     </Text>
-                    <Flex flexDir='row' gap={3}>
+                    <Flex flexDir='row' gap='0.7rem'>
                       {product?.originalPrice ? (
                         <>
                           <Text
@@ -209,10 +209,10 @@ export const WishList = () => {
         </SimpleGrid>
       </Flex>
 
-      <Flex flexDir='column' gap={14}>
+      <Flex flexDir='column' gap='3rem'>
         <Flex justify='space-between' position='relative'>
-          <Flex w='50%' flexDir='column' gap={5}>
-            <Flex alignItems='center' flexDir='row' gap={4}>
+          <Flex w='50%' flexDir='column'>
+            <Flex alignItems='center' flexDir='row' gap='1rem'>
               <Rectangle />
               <Text color='var(--chakra-colors-primary-black)'>
                 Just For You
@@ -225,7 +225,7 @@ export const WishList = () => {
           </Flex>
         </Flex>
 
-        <Flex flexDir='row' gap={8}>
+        <Flex flexDir='row' gap='2rem'>
           {justForYouProducts?.map((product: Product) => {
             const {
               id,
@@ -239,19 +239,19 @@ export const WishList = () => {
             return (
               <Card.Root
                 key={id}
-                minW='270px'
+                minW='16.875rem'
                 boxSizing='border-box'
                 flexDir='column'
-                gap={4}
+                gap='1.25rem'
                 border='none'
               >
                 <Flex
                   className={css.product}
-                  w='full'
-                  h='250px'
+                  w='100%'
+                  h='15.625rem'
                   bg='var(--chakra-colors-primary-grey)'
                   rounded='sm'
-                  pt={8}
+                  pt='1.5rem'
                   position='relative'
                 >
                   <Link
@@ -273,15 +273,15 @@ export const WishList = () => {
 
                   <Flex
                     flexDir='column'
-                    gap={2}
+                    gap='1.125rem'
                     position='absolute'
-                    top={2.5}
-                    right={2.5}
+                    top='1.15625rem'
+                    right='1.15625rem'
                   >
                     <Link to={`/product/${id}`}>
                       <Box
                         bg='var(--chakra-colors-primary-white2)'
-                        p={1.5}
+                        p='0.3rem'
                         rounded='full'
                         cursor='pointer'
                       >
@@ -291,16 +291,16 @@ export const WishList = () => {
                   </Flex>
                   {product?.discount && (
                     <Flex
-                      px={3}
-                      py={1}
+                      px='0.6rem'
+                      py='0.3rem'
                       bg='var(--chakra-colors-primary-orange)'
                       position='absolute'
-                      top={4}
-                      left={4}
+                      top='1.25rem'
+                      left='1.25rem'
                       border='none'
                       rounded='sm'
                       color='var(--chakra-colors-primary-white)'
-                      fontSize='sm'
+                      fontSize='0.875rem'
                     >
                       {product?.discount}
                     </Flex>
@@ -330,15 +330,15 @@ export const WishList = () => {
                 </Flex>
 
                 <Card.Footer p={0}>
-                  <Flex flexDir='column' gap={2}>
+                  <Flex flexDir='column' gap='0.3rem'>
                     <Text
-                      fontSize='md'
+                      fontSize='1rem'
                       color='var(--chakra-colors-primary-black)'
                       fontWeight='medium'
                     >
                       {name}
                     </Text>
-                    <Flex flexDir='row' gap={3}>
+                    <Flex flexDir='row' gap='1rem'>
                       <Text
                         color='var(--chakra-colors-primary-orange)'
                         fontWeight='medium'
@@ -353,7 +353,7 @@ export const WishList = () => {
                         {currentPrice}
                       </Text>
                     </Flex>
-                    <Flex flexDir='row' gap={2}>
+                    <Flex flexDir='row' gap='0.3rem'>
                       {GetRatingIcon(rating)}
                       <Text
                         color='var(--chakra-colors-primary-black)/50'

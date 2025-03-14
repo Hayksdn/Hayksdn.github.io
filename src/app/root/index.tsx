@@ -1,6 +1,6 @@
+import { CustomContainer } from '@/shared/components/layout/container'
 import { Services } from '@/shared/components/services'
 import { ScrollTop } from '@/shared/components/ui/scrollTop'
-import { CustomContainer } from '@/shared/container'
 import { Flex } from '@chakra-ui/react'
 
 import { Advertisement } from './modules/advertisement'
@@ -23,7 +23,7 @@ export default function Root() {
         mx='auto'
         display='flex'
         flexDir='column'
-        gap={16}
+        gap='3rem'
       >
         <Categories />
         <BestSelling />
@@ -32,7 +32,7 @@ export default function Root() {
         <NewArrival />
       </CustomContainer>
       <Services />
-      <Flex w='full' h='fit-content' position='relative' mb={20}>
+      <Flex w='full' h='fit-content' position='relative' mb='5rem'>
         <ScrollTop />
       </Flex>
     </>

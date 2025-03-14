@@ -2,7 +2,7 @@ export const contactInfo = [
   {
     type: "Call To Us",
     description: "We are available 24/7, 7 days a week",
-    phone: "+8801611112222",
+    phone: "Phone:  +8801611112222",
   },
   {
     type: "Write to US",

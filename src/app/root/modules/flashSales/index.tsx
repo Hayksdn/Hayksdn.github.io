@@ -58,14 +58,14 @@ export const FlashSales = () => {
   }
 
   return (
-    <Flex flexDir='column' gap={10}>
-      <Flex maxW='1170px' w='full' mx='auto' justify='space-between'>
+    <Flex flexDir='column' gap='3rem'>
+      <Flex maxW='73.125rem' w='full' mx='auto' justify='space-between'>
         <Flex w='50%' justify='space-between'>
-          <Flex flexDir='column' gap={6}>
-            <Flex alignItems='center' flexDir='row' gap={4}>
+          <Flex flexDir='column' gap='1.4rem'>
+            <Flex alignItems='center' flexDir='row' gap='1rem'>
               <Rectangle />
               <Text
-                fontSize='md'
+                fontSize='1rem'
                 color='var(--chakra-colors-primary-orange)'
                 fontWeight='semibold'
               >
@@ -75,7 +75,7 @@ export const FlashSales = () => {
 
             <Text
               fontFamily='Inter'
-              fontSize='4xl'
+              fontSize='2.25rem'
               color='var(--chakra-colors-primary-black)'
               fontWeight='semibold'
             >
@@ -83,7 +83,7 @@ export const FlashSales = () => {
             </Text>
           </Flex>
 
-          <Flex pt={14}>
+          <Flex pt='3.4rem'>
             <TimerIcon />
           </Flex>
         </Flex>
@@ -95,10 +95,10 @@ export const FlashSales = () => {
 
       <Flex
         flexDir='row'
-        gap={8}
+        gap='2rem'
         overflowX='hidden'
         scrollBehavior='smooth'
-        pl='175px'
+        pl='10.9375rem'
         ref={boxRef}
       >
         {flashSalesProducts?.map((product: Product) => {
@@ -115,19 +115,19 @@ export const FlashSales = () => {
           return (
             <Card.Root
               key={id}
-              minW='270px'
+              minW='16.875rem'
               boxSizing='border-box'
               flexDir='column'
-              gap={4}
+              gap='1.25rem'
               border='none'
             >
               <Flex
                 className={css.product}
-                w='full'
-                h='250px'
+                w='100%'
+                h='15.625rem'
                 bg='var(--chakra-colors-primary-grey)'
                 rounded='sm'
-                pt={8}
+                pt='1.5rem'
                 position='relative'
               >
                 <NavLink
@@ -149,14 +149,14 @@ export const FlashSales = () => {
 
                 <Flex
                   flexDir='column'
-                  gap={2}
+                  gap='1.125rem'
                   position='absolute'
-                  top={2.5}
-                  right={2.5}
+                  top='1.15625rem'
+                  right='1.15625rem'
                 >
                   <Box
                     bg='var(--chakra-colors-primary-white2)'
-                    p={1.5}
+                    p='0.3rem'
                     rounded='full'
                     cursor='pointer'
                     onClick={() => {
@@ -172,12 +172,12 @@ export const FlashSales = () => {
                       setActiveWishListItems(newWishListData)
                     }}
                   >
-                    <HeartIcon width='24px' height='24px' />
+                    <HeartIcon width='1.5rem' height='1.5rem' />
                   </Box>
                   <NavLink to={`/product/${id}`}>
                     <Box
                       bg='var(--chakra-colors-primary-white2)'
-                      p={1.5}
+                      p='0.3rem'
                       rounded='full'
                       cursor='pointer'
                     >
@@ -187,16 +187,16 @@ export const FlashSales = () => {
                 </Flex>
                 {discount && (
                   <Flex
-                    px={3}
-                    py={1}
+                    px='0.6rem'
+                    py='0.3rem'
                     bg='var(--chakra-colors-primary-orange)'
                     position='absolute'
-                    top={4}
-                    left={4}
+                    top='1.25rem'
+                    left='1.25rem'
                     border='none'
                     rounded='sm'
                     color='var(--chakra-colors-primary-white)'
-                    fontSize='sm'
+                    fontSize='0.875rem'
                   >
                     {discount}
                   </Flex>
@@ -229,13 +229,13 @@ export const FlashSales = () => {
               <Card.Footer p={0}>
                 <Flex flexDir='column' gap={2}>
                   <Text
-                    fontSize='md'
+                    fontSize='1rem'
                     color='var(--chakra-colors-primary-black)'
                     fontWeight='medium'
                   >
                     {name}
                   </Text>
-                  <Flex flexDir='row' gap={3}>
+                  <Flex flexDir='row' gap='1rem'>
                     <Text
                       color='var(--chakra-colors-primary-orange)'
                       fontWeight='medium'
@@ -250,11 +250,11 @@ export const FlashSales = () => {
                       {currentPrice}
                     </Text>
                   </Flex>
-                  <Flex flexDir='row' gap={2}>
+                  <Flex flexDir='row' gap='0.4rem'>
                     {GetRatingIcon(rating)}
                     <Text
                       color='var(--chakra-colors-primary-black)/50'
-                      fontSize='sm'
+                      fontSize='0.875rem'
                       fontWeight='semibold'
                     >
                       ({ratingCount})

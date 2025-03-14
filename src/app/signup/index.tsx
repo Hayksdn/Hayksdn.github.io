@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 
+import { useAuthActions } from '@/shared/api/auth'
 import { Button, Flex, Image, Input, Text } from '@chakra-ui/react'
 import { Controller, useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
@@ -8,70 +9,79 @@ import LoginIcon from 'shared/assets/images/login/login.jpg'
 
 import css from './signup.module.css'
 
+export type SignUpFormValues = {
+  name: string
+  email: string
+  password: string
+}
+
 export const SignUp = () => {
   const formRef = useRef<HTMLFormElement>(null)
+  const { registerUser } = useAuthActions()
 
-  const formFields = [
-    { id: 'name', placeholder: 'Name' },
-    { id: 'emailOrPhone', placeholder: 'Email or Phone Number' },
-    { id: 'password', placeholder: 'Password' },
+  const formFields: {
+    id: keyof SignUpFormValues
+    placeholder: string
+    type: string
+  }[] = [
+    { id: 'name', placeholder: 'Name', type: 'text' },
+    { id: 'email', placeholder: 'Email Address', type: 'email' },
+    { id: 'password', placeholder: 'Password', type: 'password' },
   ]
 
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm()
-
-  const onSubmit = (data: any) => {
-    console.log('Form submitted:', data)
-  }
+  } = useForm<SignUpFormValues>()
 
   return (
     <Flex
-      w='full'
+      w='100%'
       h='auto'
-      pr={40}
+      pr='7rem'
       flexDir='row'
       justify='space-between'
-      mt={20}
-      mb={28}
+      mb='5rem'
+      mt='3rem'
     >
-      <Image w='805px' h='781px' src={LoginIcon} objectFit='cover' />
-      <Flex flexDir='column' gap={12}>
+      <Image w='50.3125rem' h='48.8125rem' src={LoginIcon} objectFit='cover' />{' '}
+      <Flex flexDir='column' gap='3rem'>
         <Flex
           flexDir='column'
-          gap={6}
+          gap='1.7rem'
           color='var(--chakra-colors-primary-black)'
         >
-          <Text fontFamily='Inter' fontSize='4xl' fontWeight='medium'>
+          <Text fontFamily='Inter' fontSize='2.25rem' fontWeight='medium'>
             Create an account
           </Text>
           <Text>Enter your details below</Text>
         </Flex>
-        <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-          <Flex flexDir='column' gap={10}>
-            <Flex flexDir='column' gap={10}>
+        <form ref={formRef} onSubmit={handleSubmit(registerUser)}>
+          <Flex flexDir='column' gap='2rem'>
+            <Flex flexDir='column' gap='2rem'>
               {formFields.map((field) => (
                 <Flex
                   key={field.id}
                   flexDir='column'
-                  gap={2}
+                  gap='0.6rem'
                   className={css.inputFieldContainer}
                 >
                   <Controller
                     name={field.id}
                     control={control}
+                    defaultValue=''
                     rules={{ required: `${field.placeholder} is required` }}
                     render={({ field: controllerField }) => (
                       <Input
+                        type={field.type}
                         rounded='none'
-                        p={0}
+                        p='0'
                         border='none'
-                        borderBottom='1px solid'
+                        borderBottom='0.0625rem solid'
                         borderBottomColor='var(--chakra-colors-primary-black)/50'
-                        w='sm'
-                        h='10'
+                        w='20rem'
+                        h='1.625rem'
                         placeholder={field.placeholder}
                         {...controllerField}
                         color='var(--chakra-colors-primary-black)/40'
@@ -85,18 +95,18 @@ export const SignUp = () => {
               ))}
             </Flex>
 
-            <Flex flexDir='column' gap={4}>
+            <Flex flexDir='column' gap='1.4rem'>
               <Button variant='primary' w='full' type='submit'>
                 Create Account
               </Button>
-              <Flex flexDir='column' gap={8}>
+              <Flex flexDir='column' gap='1.5rem'>
                 <Button variant='transparent' w='full'>
-                  <Flex flexDir='row' gap={4}>
+                  <Flex flexDir='row' gap='1rem'>
                     <GoogleIcon />
                     <Text
                       color='var(--chakra-colors-primary-black)'
                       fontWeight='normal'
-                      fontSize='md'
+                      fontSize='1rem'
                     >
                       Sign up with Google
                     </Text>
@@ -104,7 +114,7 @@ export const SignUp = () => {
                 </Button>
                 <Flex
                   flexDir='row'
-                  gap={4}
+                  gap='1rem'
                   color='var(--chakra-colors-primary-black)/70'
                   justify='center'
                 >

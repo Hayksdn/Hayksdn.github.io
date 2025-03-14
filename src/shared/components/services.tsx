@@ -4,7 +4,7 @@ import DelieveryIcon from 'shared/assets/icons/delievery'
 import MoneyBackIcon from 'shared/assets/icons/moneyBack'
 import ServiceIcon from 'shared/assets/icons/service'
 
-import { CustomContainer } from '../container'
+import { CustomContainer } from './layout/container'
 
 export const Services = () => {
   const services = [
@@ -39,18 +39,18 @@ export const Services = () => {
       {services.map((service) => {
         return (
           <NavLink to='/' key={service.id}>
-            <Flex flexDir='column' gap={6} alignItems='center'>
+            <Flex flexDir='column' gap='1.4rem' alignItems='center'>
               <Box
-                w='80px'
-                h='80px'
+                w='5rem'
+                h='5rem'
                 rounded='50%'
                 bg='#2F2E30/30'
                 alignContent='center'
                 justifyItems='center'
               >
                 <Box
-                  w='58px'
-                  h='58px'
+                  w='3.625rem'
+                  h='3.625rem'
                   rounded='50%'
                   bg='var(--chakra-colors-primary-black)'
                   justifyItems='center'
@@ -60,16 +60,19 @@ export const Services = () => {
                 </Box>
               </Box>
 
-              <Flex flexDir='column' gap={2} alignItems='center'>
+              <Flex flexDir='column' gap='0.3rem' alignItems='center'>
                 <Text
                   color='var(--chakra-colors-primary-black)'
                   fontWeight='semibold'
-                  fontSize='xl'
+                  fontSize='1.25rem'
                 >
                   {service.firstSpan}
                 </Text>
 
-                <Text fontSize='sm' color='var(--chakra-colors-primary-black)'>
+                <Text
+                  fontSize='0.875rem'
+                  color='var(--chakra-colors-primary-black)'
+                >
                   {service.secondspan}
                 </Text>
               </Flex>

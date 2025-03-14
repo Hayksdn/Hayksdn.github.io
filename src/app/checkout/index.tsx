@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 
 import { BreadCrumb } from '@/shared/components/breadcrumb'
+import { CustomContainer } from '@/shared/components/layout/container'
 import { Products } from '@/shared/components/products'
-import { CustomContainer } from '@/shared/container'
 import { useCart } from '@/shared/context/Cart/CartContext'
 import { updateCartTotal } from '@/shared/utils/cart'
 import { Button, Flex, Image, Input, Separator, Text } from '@chakra-ui/react'
@@ -61,16 +61,16 @@ export const Checkout = () => {
       mx='auto'
       display='flex'
       flexDir='column'
-      gap={10}
-      mb={24}
-      mt={20}
+      gap='0.625rem'
+      mb='5rem'
+      mt='3rem'
     >
       <BreadCrumb />
-      <Flex flexDir='column' gap={8}>
+      <Flex flexDir='column' gap='3rem'>
         <Text
           fontFamily='Inter'
           fontWeight='medium'
-          fontSize='4xl'
+          fontSize='2.25rem'
           color='var(--chakra-colors-primary-black)'
         >
           Billing Details
@@ -81,7 +81,11 @@ export const Checkout = () => {
             ref={formRef}
             onSubmit={handleSubmit((data) => console.log(data))}
           >
-            <Flex flexDir='column' gap={8} className={css.inputFieldContainer}>
+            <Flex
+              flexDir='column'
+              gap='1.5rem'
+              className={css.inputFieldContainer}
+            >
               {formFields.map((field) => (
                 <Flex key={field.id} flexDir='column' gap={2}>
                   <Flex flexDir='row'>
@@ -100,8 +104,8 @@ export const Checkout = () => {
                     render={({ field }) => (
                       <Input
                         bg='var(--chakra-colors-primary-grey)'
-                        w='lg'
-                        h='10'
+                        w='32rem'
+                        h='2.5rem'
                         {...field}
                       />
                     )}
@@ -123,7 +127,7 @@ export const Checkout = () => {
             </Flex>
           </form>
 
-          <Flex flexDir='column' gap={8} pt={6}>
+          <Flex flexDir='column' gap='2rem' pt='1.7rem'>
             {Object.entries(activeCartItems).map(([id, value]) => {
               const product = Products.find(
                 (product) => product.id === Number(id)
@@ -133,8 +137,8 @@ export const Checkout = () => {
                 <Flex
                   key={id}
                   flexDir='column'
-                  gap={8}
-                  maxW='400px'
+                  gap='2rem'
+                  maxW='25rem'
                   color='var(--chakra-colors-primary-black)'
                 >
                   <Flex
@@ -142,11 +146,11 @@ export const Checkout = () => {
                     justify='space-between'
                     alignItems='center'
                   >
-                    <Flex flexDir='row' gap={6} alignItems='center'>
+                    <Flex flexDir='row' gap='1.5rem' alignItems='center'>
                       <Image
                         src={product?.images[0]}
-                        w='54px'
-                        h='54px'
+                        w='3.375rem'
+                        h='3.375rem'
                         objectFit='contain'
                         cursor='pointer'
                       />
@@ -159,7 +163,7 @@ export const Checkout = () => {
                 </Flex>
               )
             })}
-            <Flex flexDir='column' gap={3} maxW='400px'>
+            <Flex flexDir='column' gap='1rem' maxW='25rem'>
               <Flex flexDir='row' justify='space-between'>
                 <Text>Subtotal:</Text>
                 <Text>${cartTotal}</Text>
@@ -190,26 +194,26 @@ export const Checkout = () => {
             <RadioGroup
               display='flex'
               flexDir='column'
-              gap={8}
-              maxW='400px'
+              gap='1.7rem'
+              maxW='25rem'
               className={css.radioGroup}
               color='var(--chakra-colors-primary-black)'
               defaultValue='Cash on delievery'
             >
               <Flex w='full' flexDir='row' justify='space-between'>
                 <Radio value='Bank'>
-                  <Text fontSize='md' fontWeight='normal'>
+                  <Text fontSize='1rem' fontWeight='normal'>
                     Bank
                   </Text>
                 </Radio>
-                <Flex flexDir='row' gap={2}>
+                <Flex flexDir='row' gap='0.3rem'>
                   {paymentIcons.map((icon) => {
                     return (
                       <Image
                         key={icon.id}
                         src={icon.image}
-                        w='42px'
-                        h='28px'
+                        w='2.625rem'
+                        h='1.75rem'
                         objectFit='contain'
                       />
                     )
@@ -219,19 +223,19 @@ export const Checkout = () => {
 
               <Radio
                 value='Cash on delievery'
-                fontSize='md'
+                fontSize='1rem'
                 fontWeight='normal'
               >
                 Cash on delievery
               </Radio>
             </RadioGroup>
 
-            <Flex flexDir='row' gap={4}>
+            <Flex flexDir='row' gap='1rem'>
               <Input
-                placeholder='Coupon Corde'
-                border='1px solid'
-                w='xs'
-                h='12'
+                placeholder='Coupon Code'
+                border='0.0625rem solid'
+                w='20rem'
+                h='3rem'
                 borderColor='var(--chakra-colors-primary-black)'
               />
               <Button variant='primary'>Apply Coupon</Button>

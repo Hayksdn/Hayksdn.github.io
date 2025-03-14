@@ -70,15 +70,15 @@ export const Categories = () => {
   }
 
   return (
-    <Stack maxW='1170px' w='full' mx='auto' gap={10}>
+    <Stack gap='2.5rem'>
       <Separator orientation='horizontal' className={css.separator} />
-      <Flex flexDir='column' gap={14}>
+      <Flex flexDir='column' gap='3rem'>
         <Flex justify='space-between'>
-          <Flex w='50%' flexDir='column' gap={5}>
-            <Flex alignItems='center' flexDir='row' gap={4}>
+          <Flex w='50%' flexDir='column' gap='1.3rem'>
+            <Flex alignItems='center' flexDir='row' gap='1rem'>
               <Rectangle />
               <Text
-                fontSize='md'
+                fontSize='1rem'
                 color='var(--chakra-colors-primary-orange)'
                 fontWeight='semibold'
               >
@@ -88,7 +88,7 @@ export const Categories = () => {
 
             <Text
               fontFamily='Inter'
-              fontSize='4xl'
+              fontSize='2.25rem'
               color='var(--chakra-colors-primary-black)'
               fontWeight='semibold'
             >
@@ -104,13 +104,13 @@ export const Categories = () => {
           </Flex>
         </Flex>
 
-        <List.Root flexDir='row' gap={8} className={css.categories}>
+        <List.Root flexDir='row' gap='2rem' className={css.categories}>
           {categories.map((category) => (
             <List.Item
               display='flex'
               flexDir='column'
-              h='145px'
-              w='170px'
+              h='9.0625rem'
+              w='10.625rem'
               alignItems='center'
               justifyContent='center'
               rounded='md'

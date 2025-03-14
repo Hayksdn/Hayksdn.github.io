@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { BreadCrumb } from '@/shared/components/breadcrumb'
+import { CustomContainer } from '@/shared/components/layout/container'
 import { Products } from '@/shared/components/products'
-import { CustomContainer } from '@/shared/container'
 import { useCart } from '@/shared/context/Cart/CartContext'
 import { getUpdatedCartData, updateCartTotal } from '@/shared/utils/cart'
 import {
@@ -65,17 +65,17 @@ export const Cart = () => {
       mx='auto'
       display='flex'
       flexDir='column'
-      gap={10}
-      mb={24}
-      mt={20}
+      gap='2.5rem'
+      mb='6rem'
+      mt='5rem'
     >
       <BreadCrumb />
-      <Flex flexDir='column' gap={20}>
+      <Flex flexDir='column' gap='5rem'>
         <Flex flexDir='column'>
-          <Table.Root borderCollapse='separate' borderSpacing='0 55px'>
+          <Table.Root borderCollapse='separate' borderSpacing='0 3.4375rem'>
             <Table.Header className={css.tableHeader}>
               <Table.Row boxShadow='0px 1px 13px 0px #0000000D'>
-                <Table.ColumnHeader pl={8} py={6}>
+                <Table.ColumnHeader pl='1.5rem' py='1.375rem'>
                   Product
                 </Table.ColumnHeader>
                 <Table.ColumnHeader textAlign='center'>
@@ -84,7 +84,7 @@ export const Cart = () => {
                 <Table.ColumnHeader textAlign='right'>
                   Quantity
                 </Table.ColumnHeader>
-                <Table.ColumnHeader pr={8} textAlign='end'>
+                <Table.ColumnHeader pr='1.5rem' textAlign='end'>
                   Subtotal
                 </Table.ColumnHeader>
               </Table.Row>
@@ -98,29 +98,29 @@ export const Cart = () => {
 
                 return (
                   <Table.Row
-                    key={id + 73481}
+                    key={id}
                     bg='var(--chakra-colors-primary-white2)'
-                    boxShadow='0px 1px 13px 0px #0000000D'
+                    boxShadow='0rem 0.0625rem 0.8125rem 0rem #0000000D'
                   >
-                    <Table.Cell pl={6} py={4}>
+                    <Table.Cell pl='1.375rem' py='1.25rem'>
                       <Flex
                         alignItems='center'
-                        gap={4}
+                        gap='1.6rem'
                         position='relative'
                         className={css.product}
                       >
                         <Image
                           src={product?.images[0]}
-                          w='54px'
-                          h='54px'
+                          w='3.375rem'
+                          h='3.375rem'
                           objectFit='contain'
                           cursor='pointer'
                         />
                         <Text>{product?.name}</Text>
                         <Flex
                           position='absolute'
-                          top={0}
-                          left={-2}
+                          top='0rem'
+                          left='-0.5rem'
                           className='cancelIcon'
                           onClick={() => {
                             ItemRemove(id)
@@ -140,8 +140,8 @@ export const Cart = () => {
                         defaultValue={String(value?.quantity)}
                         min={0}
                         className={css.numberInput}
-                        w='72px'
-                        h='48px'
+                        w='4.5rem'
+                        h='3rem'
                         step={1}
                         alignContent='center'
                         onValueChange={(event) => {
@@ -160,13 +160,13 @@ export const Cart = () => {
                         }}
                       >
                         <NumberInputField
-                          borderWidth='1.5px'
+                          borderWidth='0.09375rem'
                           borderColor='var(--chakra-colors-primary-black)/50'
                         />
                       </NumberInputRoot>
                     </Table.Cell>
 
-                    <Table.Cell textAlign='end' pr='10'>
+                    <Table.Cell textAlign='end' pr='2.8rem'>
                       {`$${value?.quantity * Number(product?.currentPrice.slice(1))}`}
                     </Table.Cell>
                   </Table.Row>
@@ -191,35 +191,35 @@ export const Cart = () => {
         </Flex>
 
         <Flex flexDir='row' justify='space-between'>
-          <Flex flexDir='row' gap={4}>
+          <Flex flexDir='row' gap='1.5rem'>
             <Input
               placeholder='Coupon Corde'
-              border='1px solid'
-              w='xs'
-              h='14'
+              border='0.0625rem solid'
+              w='20rem'
+              h='3.7rem'
               borderColor='var(--chakra-colors-primary-black)/50'
             />
-            <Button variant='primary' py={7}>
+            <Button variant='primary' py='1.8rem'>
               Apply Coupon
             </Button>
           </Flex>
 
           <Flex
-            border='1.5px solid'
+            border='0.09375rem solid'
             color='var(--chakra-colors-primary-black)'
             borderColor='var(--chakra-colors-primary-black)'
-            w='lg'
-            h='xs'
-            py={6}
-            px={5}
+            w='32rem' // Converted from 'lg' to rem
+            h='18rem' // Converted from 'xs' to rem
+            py='1rem'
+            px='1rem'
             rounded='sm'
             flexDir='column'
-            gap={4}
+            gap='0.25rem'
           >
-            <Text fontWeight='medium' fontSize='xl'>
+            <Text fontWeight='medium' fontSize='1.25rem'>
               Cart Total
             </Text>
-            <Flex flexDir='column' gap={3}>
+            <Flex flexDir='column' gap='1rem'>
               <Flex flexDir='row' justify='space-between'>
                 <Text>Subtotal:</Text>
                 <Text>${cartTotal}</Text>

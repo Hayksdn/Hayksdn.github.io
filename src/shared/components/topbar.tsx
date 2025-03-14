@@ -8,14 +8,17 @@ import {
 import { ShopNow } from './ui/shopnow'
 
 export const TopBar = () => {
+  const topBarData = [
+    ' Summer Sale For All Swim Suits And Free Express Delievery - OFF 50%!',
+  ]
   return (
     <Flex
       w='full'
       bg='var(--chakra-colors-primary-black)'
       h='fit-content'
-      p={2}
+      p='0.4rem'
       justify='flex-end'
-      pr={40}
+      pr='10rem'
     >
       <Flex
         alignItems='center'
@@ -23,13 +26,14 @@ export const TopBar = () => {
         justify='space-between'
         textAlign='center'
       >
-        <Flex flexDir='row' gap={2}>
+        <Flex flexDir='row' gap='0.5rem'>
           <Text
-            fontSize='sm'
+            fontSize='0.875rem'
             color='var(--chakra-colors-primary-white)'
             fontWeight='normal'
           >
-            Summer Sale For All Swim Suits And Free Express Delievery - OFF 50%!
+            {' '}
+            {topBarData[0]}
           </Text>
           <ShopNow />
         </Flex>

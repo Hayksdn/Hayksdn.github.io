@@ -11,8 +11,8 @@ import SendIcon from 'shared/assets/icons/send'
 import TwitterIcon from 'shared/assets/icons/twitter'
 import QrCode from 'shared/assets/images/footer/qrCode.jpg'
 
-import { CustomContainer } from '../container'
 import { FooterData } from './footerData'
+import { CustomContainer } from './layout/container'
 
 type Link = {
   name: string
@@ -88,11 +88,11 @@ export const Footer = () => {
         mx='auto'
         display='flex'
         flexDir='column'
-        gap={20}
-        pb={4}
+        gap='4rem'
+        pb='1rem'
         h='full'
       >
-        <Grid pt={4} templateColumns='repeat(5, 1fr)' gap={14} mt={20}>
+        <Grid pt={4} templateColumns='repeat(5, 1fr)' gap='3rem' mt='4rem'>
           {FooterData &&
             Object.entries(FooterData).map(([section, data], index) => {
               if (section === 'exclusive') {
@@ -100,31 +100,35 @@ export const Footer = () => {
                 return (
                   <Flex
                     flexDir='column'
-                    gap={4}
+                    gap='1rem'
                     color='var(--chakra-colors-primary-white)'
                     key={section}
                   >
-                    <Flex flexDir='column' gap={6}>
-                      <Text fontFamily='Inter' fontWeight='bold' fontSize='2xl'>
+                    <Flex flexDir='column' gap='1.3rem'>
+                      <Text
+                        fontFamily='Inter'
+                        fontWeight='bold'
+                        fontSize='1.5rem'
+                      >
                         {exclusiveData.heading}
                       </Text>
-                      <Text fontWeight='medium' fontSize='xl'>
+                      <Text fontWeight='medium' fontSize='1.25rem'>
                         {exclusiveData.subheading}
                       </Text>
-                      <Text fontSize='md'>{exclusiveData.description}</Text>
+                      <Text fontSize='1rem'>{exclusiveData.description}</Text>
                     </Flex>
-                    <Flex w='217px' h={12} position='relative'>
+                    <Flex w='13.5625rem' h='3rem' position='relative'>
                       <Input
                         placeholder='Enter your email'
                         w='full'
-                        fontSize='md'
+                        fontSize='1rem'
                         fontWeight='normal'
                         position='relative'
                         h='full'
-                        border='1.5px solid'
+                        border='0.09375rem solid'
                         borderColor='var(--chakra-colors-primary-white)'
                       />
-                      <Flex position='absolute' right={4} top={3}>
+                      <Flex position='absolute' right='1rem' top='0.8rem'>
                         <SendIcon />
                       </Flex>
                     </Flex>
@@ -136,16 +140,16 @@ export const Footer = () => {
                   <Flex
                     key={section}
                     flexDir='column'
-                    gap={6}
+                    gap='1.3rem'
                     color='var(--chakra-colors-primary-white)'
                   >
-                    <Text fontWeight='medium' fontSize='xl'>
+                    <Text fontWeight='medium' fontSize='1.25rem'>
                       {supportData.heading}
                     </Text>
-                    <Flex flexDir='column' gap={4}>
+                    <Flex flexDir='column' gap='1rem'>
                       {Object.entries(supportData).map(([key, value]) => {
                         return (
-                          <Text fontSize='md' key={key}>
+                          <Text fontSize='1rem' key={key}>
                             {value}
                           </Text>
                         )
@@ -161,18 +165,18 @@ export const Footer = () => {
                 return (
                   <Flex
                     flexDir='column'
-                    gap={6}
+                    gap='1.3rem'
                     color='var(--chakra-colors-primary-white)'
                     key={section}
                   >
-                    <Text fontWeight='medium' fontSize='xl'>
+                    <Text fontWeight='medium' fontSize='1.25rem'>
                       {sectionData.heading}
                     </Text>
-                    <Flex flexDir='column' gap={4}>
+                    <Flex flexDir='column' gap='1rem'>
                       {sectionData.links?.map((link) => {
                         return (
                           <NavLink to={link.url} key={link.url}>
-                            <Text fontSize='md'>{link.name}</Text>
+                            <Text fontSize='1rem'>{link.name}</Text>
                           </NavLink>
                         )
                       })}
@@ -182,40 +186,41 @@ export const Footer = () => {
               } else if (section === 'downloadApp') {
                 const downloadData = data as DownloadApp
                 return (
-                  <Flex flexDir='column' gap={6} key={index}>
+                  <Flex flexDir='column' gap='1.3rem' key={index}>
                     <Flex
                       flexDir='column'
-                      gap={6}
+                      gap='1.3rem'
                       color='var(--chakra-colors-primary-white)'
                     >
-                      <Text fontWeight='medium' fontSize='xl'>
+                      <Text fontWeight='medium' fontSize='1.25rem'>
                         {downloadData.heading}
                       </Text>
-                      <Flex flexDir='column' gap={2}>
+                      <Flex flexDir='column' gap='0.5rem'>
                         <Text
                           fontWeight='medium'
-                          fontSize='xs'
+                          fontSize='0.75rem'
                           color='var(--chakra-colors-primary-white2)/70'
+                          textWrap='nowrap'
                         >
                           {downloadData.subheading}
                         </Text>
-                        <Flex flexDir='row' gap={2}>
+                        <Flex flexDir='row' gap='0.5rem'>
                           <Image
-                            w='80px'
-                            h='80px'
+                            w='5rem'
+                            h='5rem'
                             src={QrCode}
-                            border='2.5px solid '
+                            border='0.15625rem solid'
                             borderColor='var(--chakra-colors-primary-white2)'
                             objectFit='contain'
                           />
-                          <Flex flexDir='column' gap={1}>
+                          <Flex flexDir='column' gap='0.2rem'>
                             <GooglePlayIcon />
                             <AppStoreIcon />
                           </Flex>
                         </Flex>
                       </Flex>
                     </Flex>
-                    <Flex flexDir='row' gap={6}>
+                    <Flex flexDir='row' gap='1.3rem'>
                       {downloadData.socialLinks?.map((link) => {
                         return (
                           <NavLink to={link.url} key={link.url}>
@@ -229,9 +234,9 @@ export const Footer = () => {
               }
             })}
         </Grid>
-        <Flex flexDir='row' gap={2} justifyContent='center'>
+        <Flex flexDir='row' gap='0.3rem' justifyContent='center'>
           <CopyRightIcon />
-          <Text fontSize='md' color='var(--chakra-colors-primary-white)/30'>
+          <Text fontSize='1rem' color='var(--chakra-colors-primary-white)/30'>
             Copyright Rimel 2025. All right reserved
           </Text>
         </Flex>

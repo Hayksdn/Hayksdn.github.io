@@ -2,9 +2,9 @@ import type { ReactNode } from 'react'
 
 import { Flex } from '@chakra-ui/react'
 
-import { Footer } from './components/footer'
-import { Navbar } from './components/navbar'
-import { TopBar } from './components/topbar'
+import { Footer } from '../footer'
+import { Navbar } from '../navbar'
+import { TopBar } from '../topbar'
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -12,7 +12,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <TopBar />
       <Navbar />
 
-      <Flex height='100%' flex={1} flexDir='column' gap='50px'>
+      <Flex height='100%' flex={1} flexDir='column' gap='4rem'>
         {children}
       </Flex>
       <Footer />

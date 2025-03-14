@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 
 import { BreadCrumb } from '@/shared/components/breadcrumb'
-import { CustomContainer } from '@/shared/container'
+import { CustomContainer } from '@/shared/components/layout/container'
 import { Button, Flex, Input, Text } from '@chakra-ui/react'
 import { Grid } from '@chakra-ui/react'
 import { Controller, useForm } from 'react-hook-form'
@@ -10,21 +10,27 @@ import { NavLink } from 'react-router-dom'
 import css from './account.module.css'
 
 export const Account = () => {
-  const formFields = [
-    { id: '0', label: 'First Name', placeholder: 'Enter your first name' },
-    { id: '1', label: 'Last Name', placeholder: 'Enter your last name' },
-    { id: '2', label: 'Email', placeholder: 'Enter your email' },
-    { id: '3', label: 'Address', placeholder: 'Enter your address' },
+  const formSections = [
     {
-      id: '4',
-      label: 'Current Password',
-      placeholder: 'Enter current password',
+      label: 'Personal Information',
+      fields: [
+        { id: '0', label: 'First Name', placeholder: 'Enter your first name' },
+        { id: '1', label: 'Last Name', placeholder: 'Enter your last name' },
+        { id: '2', label: 'Email', placeholder: 'Enter your email' },
+        { id: '3', label: 'Address', placeholder: 'Enter your address' },
+      ],
     },
-    { id: '5', label: 'New Password', placeholder: 'Enter new password' },
     {
-      id: '6',
-      label: 'Confirm New Password',
-      placeholder: 'Re-enter new password',
+      label: 'Password Changes',
+      fields: [
+        { id: '4', label: 'Current Password', placeholder: 'Current password' },
+        { id: '5', label: 'New Password', placeholder: 'New password' },
+        {
+          id: '6',
+          label: 'Confirm New Password',
+          placeholder: 'Confirm new password',
+        },
+      ],
     },
   ]
   const formRef = useRef<HTMLFormElement>(null)
@@ -107,13 +113,13 @@ export const Account = () => {
         </Flex>
 
         <Flex
-          boxShadow=' 0px 1px 13px 0px #0000000D'
-          w='870px'
-          h='630px'
-          gap={2}
+          boxShadow='0px 0.0625rem 0.8125rem 0px #0000000D'
+          w='54.375rem'
+          h='39.375rem'
+          gap='0.5rem'
           flexDir='column'
-          px={20}
-          py={10}
+          px='5rem'
+          py='2.5rem'
         >
           <Text color='var(--chakra-colors-primary-orange)' fontWeight='medium'>
             Edit Your Profile
@@ -124,62 +130,74 @@ export const Account = () => {
             onSubmit={handleSubmit(onSubmit)}
             className={css.inputFieldContainer}
           >
-            <Grid templateColumns='repeat(2, 1fr)' columnGap={14} rowGap={4}>
-              {formFields.slice(0, 4).map((field) => (
-                <Flex key={field.id} flexDir='column' gap={3}>
-                  <Text color='var(--chakra-colors-primary-black)'>
-                    {field.label}
-                  </Text>
-                  <Controller
-                    name={field.label}
-                    control={control}
-                    render={({ field: controllerField }) => (
-                      <Input
-                        bg='var(--chakra-colors-primary-grey)'
-                        h='12'
-                        w='xs'
-                        {...controllerField}
-                        placeholder={field.placeholder}
+            <Grid
+              templateColumns='repeat(2, 1fr)'
+              columnGap='3.5rem'
+              rowGap='1rem'
+            >
+              {formSections.map((section) => {
+                if (section.label === 'Personal Information') {
+                  return section.fields.map((field) => (
+                    <Flex key={field.id} flexDir='column' gap='0.75rem'>
+                      <Text color='var(--chakra-colors-primary-black)'>
+                        {field.label}
+                      </Text>
+                      <Controller
+                        name={field.label}
+                        control={control}
+                        render={({ field: controllerField }) => (
+                          <Input
+                            bg='var(--chakra-colors-primary-grey)'
+                            h='3rem'
+                            w='20rem'
+                            {...controllerField}
+                            placeholder={field.placeholder}
+                          />
+                        )}
                       />
-                    )}
-                  />
-                  {errors[field.label] && (
-                    <Text color='red.400'>{field.label} is required</Text>
-                  )}
-                </Flex>
-              ))}
+                      {errors[field.label] && (
+                        <Text color='red.400'>{field.label} is required</Text>
+                      )}
+                    </Flex>
+                  ))
+                }
+              })}
             </Grid>
 
-            <Flex flexDir='column' mt={6} gap={4}>
+            <Flex flexDir='column' mt='1.5rem' gap='1rem'>
               <Text color='var(--chakra-colors-primary-black)'>
-                Password Changes
+                {formSections[1].label}
               </Text>
-              {formFields.slice(4).map((field) => (
-                <Flex key={field.id} flexDir='column' mt={2}>
-                  <Controller
-                    name={field.label}
-                    control={control}
-                    render={({ field: controllerField }) => (
-                      <Input
-                        bg='var(--chakra-colors-primary-grey)'
-                        h='12'
-                        w='full'
-                        {...controllerField}
-                        placeholder={field.placeholder}
+              {formSections.map((section) => {
+                if (section.label === 'Password Changes') {
+                  return section.fields.map((field) => (
+                    <Flex key={field.id} flexDir='column' mt='0.5rem'>
+                      <Controller
+                        name={field.label}
+                        control={control}
+                        render={({ field: controllerField }) => (
+                          <Input
+                            bg='var(--chakra-colors-primary-grey)'
+                            h='3rem'
+                            w='full'
+                            {...controllerField}
+                            placeholder={field.placeholder}
+                          />
+                        )}
                       />
-                    )}
-                  />
-                  {errors[field.label] && (
-                    <Text color='red.400'>{field.label} is required</Text>
-                  )}
-                </Flex>
-              ))}
+                      {errors[field.label] && (
+                        <Text color='red.400'>{field.label} is required</Text>
+                      )}
+                    </Flex>
+                  ))
+                }
+              })}
             </Flex>
             <Flex
               flexDir='row'
-              gap={8}
+              gap='2rem'
               justify='end'
-              mt={6}
+              mt='1.5rem'
               alignItems='center'
             >
               <Text color='var(--chakra-colors-primary-black)'>Cancel</Text>

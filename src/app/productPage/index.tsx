@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
 import { BreadCrumb } from '@/shared/components/breadcrumb'
+import { CustomContainer } from '@/shared/components/layout/container'
 import { Products } from '@/shared/components/products'
 import { Rectangle } from '@/shared/components/ui/rectangle'
-import { CustomContainer } from '@/shared/container'
 import { useCart } from '@/shared/context/Cart/CartContext'
 import { useWishList } from '@/shared/context/wishList/wishListContext'
 import { getUpdatedCartData } from '@/shared/utils/cart'
@@ -62,25 +62,25 @@ export const ProductPage = () => {
       mx='auto'
       display='flex'
       flexDir='column'
-      gap={10}
-      mb={24}
-      mt={20}
+      gap='3rem'
+      mb='5rem'
+      mt='3rem'
     >
       <BreadCrumb />
-      <Flex flexDir='row' gap={10}>
-        <Flex flexDir='column' gap={4}>
+      <Flex flexDir='row' gap='3rem'>
+        <Flex flexDir='column' gap='1.7rem'>
           {product &&
             product.images?.slice(1).map((item, index) => (
               <Flex
                 key={index}
-                w='170px'
-                h='138px'
+                w='10.625rem'
+                h='8.625rem'
                 bg='var(--chakra-colors-primary-grey)'
                 justify='center'
               >
                 <Image
-                  w='121px'
-                  h='114px'
+                  w='7.5625rem'
+                  h='7.125rem'
                   objectFit='contain'
                   src={item}
                   alt={`Product Image ${index + 2}`}
@@ -89,50 +89,50 @@ export const ProductPage = () => {
             ))}
         </Flex>
         <Flex
-          w='500px'
-          h='600px'
+          w='31.25rem'
+          h='37.5rem'
           bg='var(--chakra-colors-primary-grey)'
           alignItems='center'
         >
           <Image
-            w='446px'
-            h='315px'
+            w='27.875rem'
+            h='19.6875rem'
             objectFit='contain'
             src={product?.images[0]}
           />
         </Flex>
-        <Flex flexDir='column' gap={4}>
+        <Flex flexDir='column' gap='1.7rem'>
           <Flex
             flexDir='column'
             gap={5}
             color='var(--chakra-colors-primary-black)'
           >
-            <Flex flexDir='column' gap={4}>
-              <Text fontFamily='Inter' fontWeight='semibold' fontSize='2xl'>
+            <Flex flexDir='column' gap='1.7rem'>
+              <Text fontFamily='Inter' fontWeight='semibold' fontSize='1.5rem'>
                 {product?.name}
               </Text>
-              <Flex flexDir='row' gap={4} alignItems='center'>
-                <Flex flexDir='row' gap={2}>
+              <Flex flexDir='row' gap='1.7rem' alignItems='center'>
+                <Flex flexDir='row' gap='1.7rem'>
                   {GetRatingIcon(product?.rating || '')}
                   <Text color='var(--chakra-colors-primary-black)/50'>
                     ({product?.ratingCount} reviews)
                   </Text>
                 </Flex>
-                <Flex flexDir='row' gap={4} alignItems='center'>
+                <Flex flexDir='row' gap='1.7rem' alignItems='center'>
                   <Separator
                     orientation='vertical'
                     borderColor='var(--chakra-colors-primary-black)/50'
-                    h='4.5'
+                    h='1.125rem'
                   />
                   <Text color='var(--chakra-colors-primary-green)/60'>
                     In Stock
                   </Text>
                 </Flex>
               </Flex>
-              <Text fontFamily='Inter' fontSize='2xl'>
+              <Text fontFamily='Inter' fontSize='1.5rem'>
                 {product?.currentPrice}
               </Text>
-              <Flex maxW='430px'>
+              <Flex maxW='26.875rem'>
                 <Text>
                   PlayStation 5 Controller Skin High quality vinyl with air
                   channel adhesive for easy bubble free install & mess free
@@ -153,22 +153,22 @@ export const ProductPage = () => {
             gap={5}
             color='var(--chakra-colors-primary-black)'
           >
-            <Flex flexDir='row' gap={6} alignItems='center'>
-              <Text fontSize='xl'>Colors:</Text>
+            <Flex flexDir='row' gap='1.7rem' alignItems='center'>
+              <Text fontSize='1.25rem'>Colors:</Text>
               <RadioIcons
                 firstColor={product?.productColors?.[0] ?? ''}
                 secondColor={product?.productColors?.[1] ?? ''}
               />
             </Flex>
-            <Flex flexDir='row' gap={6}>
-              <Text fontSize='xl'>Size:</Text>
+            <Flex flexDir='row' gap='1.7rem'>
+              <Text fontSize='1.25rem'>Size:</Text>
               {sizes.map((item) => {
                 if (Number(item.id) === 3) {
                   return (
                     <Box
                       id={item.id}
-                      w='32px'
-                      h='32px '
+                      w='2rem'
+                      h='2rem'
                       rounded='md'
                       bg='var(--chakra-colors-primary-orange)'
                       color='var(--chakra-colors-primary-white)'
@@ -183,10 +183,10 @@ export const ProductPage = () => {
                   return (
                     <Box
                       id={item.id}
-                      w='32px'
-                      h='32px '
+                      w='2rem'
+                      h='2rem'
                       rounded='md'
-                      border='1px solid'
+                      border='0.0625rem solid'
                       borderColor='var(--chakra-colors-primary-black)/50'
                       bg='transparent'
                       color='var(--chakra-colors-primary-black)'
@@ -200,13 +200,13 @@ export const ProductPage = () => {
                 }
               })}
             </Flex>
-            <Flex flexDir='row' gap={4} alignItems='center'>
+            <Flex flexDir='row' gap='1.7rem' alignItems='center'>
               <Flex flexDir='row'>
                 <Button
                   onClick={() => valueChange('set')}
-                  w='40px'
-                  fontSize='5xl'
-                  border='1px solid'
+                  w='2.5rem'
+                  fontSize='3rem'
+                  border='0.0625rem solid'
                   borderColor='var(--chakra-colors-primary-black)/50'
                   borderLeftRadius='md'
                   borderRightRadius='none'
@@ -217,11 +217,11 @@ export const ProductPage = () => {
                 <Input
                   value={quantity}
                   textAlign='center'
-                  w='80px'
-                  fontSize='xl'
+                  w='5rem'
+                  fontSize='1.25rem'
                   color='var(--chakra-colors-primary-black)'
                   fontWeight='medium'
-                  border='1px solid'
+                  border='0.0625rem solid'
                   borderColor='var(--chakra-colors-primary-black)/50'
                   borderRight='none'
                   borderLeft='none'
@@ -229,7 +229,7 @@ export const ProductPage = () => {
                 />
                 <Button
                   onClick={() => valueChange('combine')}
-                  w='40px'
+                  w='2.5rem'
                   border='none'
                   borderColor='var(--chakra-colors-primary-black)/50'
                   borderRightRadius='md'
@@ -246,7 +246,7 @@ export const ProductPage = () => {
                     const newCartData = getUpdatedCartData({
                       itemId: product?.id || 0,
                       quantity: quantity,
-                      method: 'set',
+                      method: 'combine',
                     })
 
                     localStorage.setItem('cart', JSON.stringify(newCartData))
@@ -257,37 +257,37 @@ export const ProductPage = () => {
                 </Button>
               </NavLink>
               <Box
-                w='40px'
+                w='2.5rem'
                 rounded='md'
-                h='40px'
+                h='2.5rem'
                 justifyItems='center'
                 alignContent='center'
-                border='1px solid'
+                border='0.0625rem solid'
                 borderColor='var(--chakra-colors-primary-black)/50'
                 bg='transparent'
               >
-                <HeartIcon width='25px' height='25px' />
+                <HeartIcon width='1.5625rem' height='1.5625rem' />
               </Box>
             </Flex>
             <Flex
-              w='399px'
-              h='180px'
-              border='1px solid'
+              w='25.9375rem'
+              h='12.25rem'
+              border='0.0625rem solid'
               flexDir='column'
-              gap={4}
+              gap='1.0625rem'
               justify='center'
-              pl={2}
+              pl='1.125rem'
               borderColor='var(--chakra-colors-primary-black)/50'
               color='var(--chakra-colors-primary-black)'
             >
-              <Flex flexDir='row' gap={4} alignItems='center'>
+              <Flex flexDir='row' gap='1.7rem' alignItems='center'>
                 <Flex>
                   <DelieveryIcon color='black' />
                 </Flex>
-                <Flex flexDir='column' gap={2}>
+                <Flex flexDir='column' gap='0.4rem'>
                   <Text fontWeight='medium'>Free Delivery</Text>
                   <Text
-                    fontSize='sm'
+                    fontSize='0.875rem'
                     textDecoration='underline'
                     textUnderlineOffset='2'
                   >
@@ -302,13 +302,13 @@ export const ProductPage = () => {
                 borderColor='var(--chakra-colors-primary-black)/30'
                 h='auto'
               />
-              <Flex flexDir='row' gap={4} alignItems='center'>
+              <Flex flexDir='row' gap='1.7rem' alignItems='center'>
                 <Flex>
                   <ReturnIcon />
                 </Flex>
-                <Flex flexDir='column' gap={2}>
+                <Flex flexDir='column' gap='0.4rem'>
                   <Text fontWeight='medium'>Return Delivery</Text>
-                  <Text fontSize='sm'>
+                  <Text fontSize='0.875rem'>
                     Free 30 Days Delivery Returns. Details
                   </Text>
                 </Flex>
@@ -318,9 +318,9 @@ export const ProductPage = () => {
         </Flex>
       </Flex>
 
-      <Flex flexDir='column' gap={14}>
+      <Flex flexDir='column' gap='3.7rem'>
         <Flex justify='space-between' position='relative'>
-          <Flex alignItems='center' flexDir='row' gap={4}>
+          <Flex alignItems='center' flexDir='row' gap='1.7rem'>
             <Rectangle />
             <Text
               color='var(--chakra-colors-primary-orange)'
@@ -330,7 +330,7 @@ export const ProductPage = () => {
             </Text>
           </Flex>
         </Flex>
-        <Flex flexDir='row' gap={8}>
+        <Flex flexDir='row' gap='2rem'>
           {justForYouProducts?.map((product: Product) => {
             const {
               id,
@@ -344,19 +344,19 @@ export const ProductPage = () => {
             return (
               <Card.Root
                 key={id}
-                minW='270px'
+                minW='16.875rem'
                 boxSizing='border-box'
                 flexDir='column'
-                gap={4}
+                gap='1.7rem'
                 border='none'
               >
                 <Flex
                   className={css.product}
                   w='full'
-                  h='250px'
+                  h='15.625rem'
                   bg='var(--chakra-colors-primary-grey)'
                   rounded='sm'
-                  pt={8}
+                  pt='2.5rem'
                   position='relative'
                 >
                   <NavLink
@@ -378,14 +378,14 @@ export const ProductPage = () => {
 
                   <Flex
                     flexDir='column'
-                    gap={2}
+                    gap='0.5rem'
                     position='absolute'
-                    top={2.5}
-                    right={2.5}
+                    top='1.15625rem'
+                    right='1.15625rem'
                   >
                     <Box
                       bg='var(--chakra-colors-primary-white2)'
-                      p={1.5}
+                      p='0.3rem'
                       rounded='full'
                       cursor='pointer'
                       onClick={() => {
@@ -401,12 +401,12 @@ export const ProductPage = () => {
                         setActiveWishListItems(newWishListData)
                       }}
                     >
-                      <HeartIcon width='24px' height='24px' />
+                      <HeartIcon width='1.5rem' height='1.5rem' />
                     </Box>
                     <NavLink to={`/product/${id}`}>
                       <Box
                         bg='var(--chakra-colors-primary-white2)'
-                        p={1.5}
+                        p='0.3rem'
                         rounded='full'
                         cursor='pointer'
                       >
@@ -416,16 +416,16 @@ export const ProductPage = () => {
                   </Flex>
                   {product?.discount && (
                     <Flex
-                      px={3}
-                      py={1}
+                      px='0.5rem'
+                      py='0.2rem'
                       bg='var(--chakra-colors-primary-orange)'
                       position='absolute'
-                      top={4}
-                      left={4}
+                      top='1rem'
+                      left='1rem'
                       border='none'
                       rounded='sm'
                       color='var(--chakra-colors-primary-white)'
-                      fontSize='sm'
+                      fontSize='0.875rem'
                     >
                       {product?.discount}
                     </Flex>
@@ -455,7 +455,7 @@ export const ProductPage = () => {
                 </Flex>
 
                 <Card.Footer p={0}>
-                  <Flex flexDir='column' gap={2}>
+                  <Flex flexDir='column' gap='0.3rem'>
                     <Text
                       fontSize='md'
                       color='var(--chakra-colors-primary-black)'
@@ -463,7 +463,7 @@ export const ProductPage = () => {
                     >
                       {name}
                     </Text>
-                    <Flex flexDir='row' gap={3}>
+                    <Flex flexDir='row' gap='0.7rem'>
                       <Text
                         color='var(--chakra-colors-primary-orange)'
                         fontWeight='medium'
@@ -478,7 +478,7 @@ export const ProductPage = () => {
                         {currentPrice}
                       </Text>
                     </Flex>
-                    <Flex flexDir='row' gap={2}>
+                    <Flex flexDir='row' gap='0.3rem'>
                       {GetRatingIcon(rating)}
                       <Text
                         color='var(--chakra-colors-primary-black)/50'

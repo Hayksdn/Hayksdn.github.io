@@ -1,7 +1,7 @@
 import { Statistics, Workers } from '@/shared/components/aboutData'
 import { BreadCrumb } from '@/shared/components/breadcrumb'
+import { CustomContainer } from '@/shared/components/layout/container'
 import { Services } from '@/shared/components/services'
-import { CustomContainer } from '@/shared/container'
 import { Flex, Image, Text } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import CircleIcon from 'shared/assets/icons/circle'
@@ -18,22 +18,22 @@ export const About = () => {
         mx='auto'
         display='flex'
         flexDir='column'
-        gap={10}
-        mb={24}
-        mt={20}
+        gap='3rem'
+        mb='5rem'
+        mt='3rem'
       >
         <BreadCrumb />
       </CustomContainer>
-      <Flex flexDir='row' justify='space-between' pl={40}>
-        <Flex flexDir='column' gap={10} justify='center'>
-          <Text fontFamily='Inter' fontWeight='semibold' fontSize='5xl'>
+      <Flex flexDir='row' justify='space-between' pl='11rem'>
+        <Flex flexDir='column' gap='3rem' justify='center'>
+          <Text fontFamily='Inter' fontWeight='semibold' fontSize='3rem'>
             Our Story
           </Text>
           <Flex
             flexDir='column'
-            gap={6}
+            gap='1.5rem'
             color='var(--chakra-colors-primary-black)'
-            maxW='lg'
+            maxW='32rem'
           >
             <Text>
               Launced in 2015, Exclusive is South Asia's premier online shopping
@@ -49,25 +49,30 @@ export const About = () => {
             </Text>
           </Flex>
         </Flex>
-        <Image w='706px' h='609px' src={OurStoryIcon} objectFit='cover' />
+        <Image
+          w='44.125rem'
+          h='38.0625rem'
+          src={OurStoryIcon}
+          objectFit='cover'
+        />{' '}
       </Flex>
       <CustomContainer
         variant='container'
         mx='auto'
         display='flex'
         flexDir='column'
-        gap={10}
-        mb={24}
-        mt={20}
+        gap='3rem'
+        mb='5rem'
+        mt='3rem'
       >
-        <Flex flexDir='row' gap={8}>
+        <Flex flexDir='row' gap='2rem'>
           {Statistics.map((item) => {
             if (item.id === 2) {
               return (
                 <Flex
                   key={item.id}
-                  w='270px'
-                  h='230px'
+                  w='16.875rem'
+                  h='14.375rem'
                   border='none'
                   bg='var(--chakra-colors-primary-orange)'
                   justifyContent='center'
@@ -75,16 +80,16 @@ export const About = () => {
                   alignContent='center'
                   rounded='md'
                   flexDir='column'
-                  gap={5}
-                  pt={2}
+                  gap='1.25rem'
+                  pt='0.5rem'
                 >
                   <Flex justify='center'>{item.icon}</Flex>
                   <Flex
                     flexDir='column'
-                    gap={3}
+                    gap='0.3rem'
                     color='var(--chakra-colors-primary-white2)'
                   >
-                    <Text fontSize='3xl' fontFamily='Inter' fontWeight='bold'>
+                    <Text fontSize='2rem' fontFamily='Inter' fontWeight='bold'>
                       {item.value}
                     </Text>
                     <Text>{item.label}</Text>
@@ -96,8 +101,8 @@ export const About = () => {
             return (
               <Flex
                 key={item.id}
-                w='270px'
-                h='230px'
+                w='16.875rem'
+                h='14.375rem'
                 border='1px solid'
                 justifyContent='center'
                 textAlign='center'
@@ -105,16 +110,20 @@ export const About = () => {
                 borderColor='var(--chakra-colors-primary-black)/30'
                 rounded='md'
                 flexDir='column'
-                gap={5}
-                pt={2}
+                gap='1.25rem'
+                pt='0.5rem'
               >
                 <Flex justify='center'>{item.icon}</Flex>
                 <Flex
                   flexDir='column'
-                  gap={3}
+                  gap='0.3rem'
                   color='var(--chakra-colors-primary-black)'
                 >
-                  <Text fontSize='3xl' fontFamily='Inter' fontWeight='bold'>
+                  <Text
+                    fontSize='1.875rem'
+                    fontFamily='Inter'
+                    fontWeight='bold'
+                  >
                     {item.value}
                   </Text>
                   <Text>{item.label}</Text>
@@ -124,35 +133,39 @@ export const About = () => {
           })}
         </Flex>
 
-        <Flex flexDir='row' gap={8}>
+        <Flex flexDir='row' gap='2rem'>
           {Workers.map((worker) => {
             return (
-              <Flex key={worker.name} border='none' flexDir='column' gap={4}>
+              <Flex key={worker.name} border='none' flexDir='column' gap='1rem'>
                 <Flex
                   bg='var(--chakra-colors-primary-grey)'
-                  w='370px'
-                  h='430px'
+                  w='23.125rem'
+                  h='26.875rem'
                 >
                   <Image
-                    pt={5}
+                    pt='2rem'
                     src={worker.image}
                     w='full'
                     h='full'
                     objectFit='contain'
                   />
                 </Flex>
-                <Flex gap='4' flexDir='column' p={0}>
+                <Flex gap='1rem' flexDir='column' p={0}>
                   <Flex
                     flexDir='column'
-                    gap={2}
+                    gap='0.3rem'
                     color='var(--chakra-colors-primary-black)'
                   >
-                    <Text fontFamily='Inter' fontWeight='medium' fontSize='3xl'>
+                    <Text
+                      fontFamily='Inter'
+                      fontWeight='medium'
+                      fontSize='1.875rem'
+                    >
                       {worker.name}
                     </Text>
                     <Text>{worker.position}</Text>
                   </Flex>
-                  <Flex flexDir='row' gap={4}>
+                  <Flex flexDir='row' gap='1rem'>
                     <NavLink to={worker.twitter}>
                       <TwitterIcon color='black' />
                     </NavLink>

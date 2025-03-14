@@ -13,20 +13,20 @@ export const CustomContainer = ({
 }: CustomContainerProps) => {
   const widths = {
     container: {
-      base: 'calc(100% - 40px)',
-      md: 'calc(100% - 80px)',
+      base: 'calc(100% - 2.5rem)',
+      md: 'calc(100% - 5rem)',
     },
-    containerFull: { base: 'calc(100% - 40px)', md: 'calc(100% - 80px)' },
+    containerFull: { base: 'calc(100% - 2.5rem)', md: 'calc(100% - 5rem)' },
     containerXS: {
-      base: 'calc(100% - 40px)',
-      md: 'calc(100% - 80px)',
+      base: 'calc(100% - 2.5rem)',
+      md: 'calc(100% - 5rem)',
     },
   }
 
   const maxWidths = {
-    container: '1170px',
+    container: '73.125rem',
     containerFull: 'unset',
-    containerXS: '950px',
+    containerXS: '59.375rem',
   }
 
   return (

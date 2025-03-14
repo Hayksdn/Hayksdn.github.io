@@ -8,14 +8,42 @@ import WomenIcon from 'shared/assets/images/newArrival/women.jpg'
 
 import css from './newarrival.module.css'
 
+const newArrivalData = [
+  {
+    id: 1,
+    title: 'PlayStation 5',
+    description: 'Black and White version of the PS5 coming out on sale.',
+    image: PlaystationIcon,
+  },
+  {
+    id: 2,
+    title: "Women's Collections",
+    description: 'Featured woman collections that give you another vibe.',
+    image: WomenIcon,
+  },
+  {
+    id: 3,
+    title: 'Speakers',
+    description: 'Amazon wireless speakers',
+    image: SpeakersIcon,
+  },
+  {
+    id: 4,
+    title: 'Perfume',
+    description: 'GUCCI INTENSE OUD EDP',
+    image: PerfumeIcon,
+  },
+]
+
+const newArrivalSecondSection=2
 export const NewArrival = () => {
   return (
-    <Flex maxW='1170px' w='full' mx='auto' flexDir='column' gap={14}>
-      <Flex flexDir='column' gap={5}>
-        <Flex alignItems='center' flexDir='row' gap={4}>
+    <Flex flexDir='column' gap='3rem'>
+      <Flex flexDir='column' gap='1.4rem'>
+        <Flex alignItems='center' flexDir='row' gap='1rem'>
           <Rectangle />
           <Text
-            fontSize='md'
+            fontSize='1rem'
             color='var(--chakra-colors-primary-orange)'
             fontWeight='semibold'
           >
@@ -25,25 +53,31 @@ export const NewArrival = () => {
 
         <Text
           fontFamily='Inter'
-          fontSize='4xl'
+          fontSize='2.25rem'
           color='var(--chakra-colors-primary-black)'
           fontWeight='semibold'
         >
           New Arrival
         </Text>
       </Flex>
-      <Flex flexDir='row' gap={7}>
+
+      <Flex flexDir='row' gap='1.9rem'>
         <Flex
           bg='var(--chakra-colors-primary-black)'
-          w='570px'
-          h='600px'
+          w='35.625rem'
+          h='37.5rem'
           position='relative'
         >
-          <Image src={PlaystationIcon} w='full' h='full' objectFit='cover' />
+          <Image
+            src={newArrivalData[0].image}
+            w='full'
+            h='full'
+            objectFit='cover'
+          />
           <Flex
             position='absolute'
-            left={10}
-            bottom={10}
+            left='1.625rem'
+            bottom='1.625rem'
             flexDir='column'
             gap={2.5}
           >
@@ -51,33 +85,33 @@ export const NewArrival = () => {
               fontFamily='Inter'
               color='var(--chakra-colors-primary-white)'
               fontWeight='semibold'
-              fontSize='2xl'
+              fontSize='1.25rem'
             >
-              PlayStation 5
+              {newArrivalData[0].title}
             </Text>
             <Text
               color='var(--chakra-colors-primary-white)'
-              fontSize='sm'
-              maxW='242px'
+              fontSize='0.875rem'
+              maxW='15.125rem'
             >
-              Black and White version of the PS5 coming out on sale.
+              {newArrivalData[0].description}
             </Text>
             <ShopNow />
           </Flex>
         </Flex>
 
-        <Flex flexDir='column' gap={8}>
+        <Flex flexDir='column' gap='2rem'>
           <Flex
             bg='var(--chakra-colors-primary-black)'
-            w='570px'
-            h='284px'
+            w='35.625rem'
+            h='17.75rem'
             position='relative'
             className={css.womenIconContainer}
             zIndex={10000}
           >
-            <Flex w='432px' h='full' position='absolute' right={0}>
+            <Flex w='27rem' h='full' position='absolute' right={0}>
               <Image
-                src={WomenIcon}
+                src={newArrivalData[1].image}
                 w='full'
                 h='full'
                 objectFit='contain'
@@ -86,130 +120,88 @@ export const NewArrival = () => {
             </Flex>
             <Flex
               position='absolute'
-              left={10}
-              bottom={10}
+              left='1.625rem'
+              bottom='1.625rem'
               flexDir='column'
-              gap={2.5}
+              gap='1.15625rem'
               zIndex={10001}
             >
               <Text
                 fontFamily='Inter'
                 color='var(--chakra-colors-primary-white)'
                 fontWeight='semibold'
-                fontSize='2xl'
+                fontSize='1.5rem'
               >
-                Women's Collections
+                {newArrivalData[1].title}
               </Text>
               <Text
                 color='var(--chakra-colors-primary-white)'
-                fontSize='sm'
-                maxW='252px'
+                fontSize='0.875rem'
+                maxW='15.75rem'
               >
-                Featured woman collections that give you another vibe.
+                {newArrivalData[1].description}
               </Text>
               <ShopNow />
             </Flex>
           </Flex>
 
-          <Flex flexDir='row' gap={7}>
-            <Flex
-              bg='var(--chakra-colors-primary-black)'
-              w='270px'
-              h='284px'
-              position='relative'
-              className={css.speakersIconContainer}
-            >
-              <Image
-                src={SpeakersIcon}
-                w='190px'
-                h='221px'
-                objectFit='contain'
-                position='absolute'
-                left={16}
-                top={10}
-                zIndex={100}
-              />
+          <Flex flexDir='row' gap='1.7rem'>
+            {newArrivalData.slice(newArrivalSecondSection).map((item) => (
               <Flex
-                position='absolute'
-                left={6}
-                bottom={10}
-                flexDir='column'
-                gap={2.5}
-                zIndex={101}
+                key={item.id}
+                bg='var(--chakra-colors-primary-black)'
+                w='16.875rem'
+                h='17.75rem'
+                position='relative'
+                className={item.id === 3 ? css.speakersIconContainer : ''}
               >
-                <Text
-                  fontFamily='Inter'
-                  color='var(--chakra-colors-primary-white)'
-                  fontWeight='semibold'
-                  fontSize='2xl'
+                <Image
+                  src={item.image}
+                  w={item.id === 3 ? '11.875rem' : '13.125rem'}
+                  h={item.id === 3 ? '13.8125rem' : '13.875rem'}
+                  objectFit={item.id === 3 ? 'contain' : 'cover'}
+                  position='absolute'
+                  left={item.id === 3 ? '4rem' : '1.5625rem'}
+                  top={item.id === 3 ? '2.625rem' : '2.3125rem'}
+                  zIndex={100}
+                />
+                <Flex
+                  position='absolute'
+                  left='1.375rem'
+                  bottom='1.625rem'
+                  flexDir='column'
+                  gap={2.5}
+                  zIndex={101}
                 >
-                  Speakers
-                </Text>
-                <Text color='var(--chakra-colors-primary-white)' fontSize='sm'>
-                  Amazon wireless speakers
-                </Text>
-                <ShopNow />
-              </Flex>
-              <Flex
-                position='absolute'
-                w='70%'
-                h='100%'
-                bg='#d9d9d9'
-                opacity={0.4}
-                rounded='50%'
-                top={5}
-                className={css.newArrivalElipse}
-              ></Flex>
-            </Flex>
+                  <Text
+                    fontFamily='Inter'
+                    color='var(--chakra-colors-primary-white)'
+                    fontWeight='semibold'
+                    fontSize='1.5rem'
+                  >
+                    {item.title}
+                  </Text>
+                  <Text
+                    color='var(--chakra-colors-primary-white)'
+                    fontSize='0.875rem'
+                  >
+                    {item.description}
+                  </Text>
+                  <ShopNow />
+                </Flex>
 
-            <Flex
-              bg='var(--chakra-colors-primary-black)'
-              w='270px'
-              h='284px'
-              position='relative'
-            >
-              <Image
-                src={PerfumeIcon}
-                w='210px'
-                h='222px'
-                objectFit='cover'
-                position='absolute'
-                left={9}
-                top={5}
-                zIndex={100}
-              />
-              <Flex
-                position='absolute'
-                left={6}
-                bottom={10}
-                flexDir='column'
-                gap={2.5}
-                zIndex={101}
-              >
-                <Text
-                  fontFamily='Inter'
-                  color='var(--chakra-colors-primary-white)'
-                  fontWeight='semibold'
-                  fontSize='2xl'
-                >
-                  Perfume
-                </Text>
-                <Text color='var(--chakra-colors-primary-white)' fontSize='sm'>
-                  GUCCI INTENSE OUD EDP
-                </Text>
-                <ShopNow />
+                <Flex
+                  position='absolute'
+                  w='70%'
+                  h='100%'
+                  bg='#d9d9d9'
+                  opacity={0.4}
+                  rounded='50%'
+                  top='2rem'
+                  className={css.newArrivalElipse}
+                />
               </Flex>
-              <Flex
-                position='absolute'
-                w='full'
-                h='full'
-                bg='#d9d9d9'
-                opacity={0.5}
-                rounded='50%'
-                top={5}
-                className={css.newArrivalElipse}
-              ></Flex>
-            </Flex>
+            ))}
           </Flex>
         </Flex>
       </Flex>

@@ -1,7 +1,9 @@
 import { useState } from 'react'
 
-import { CustomContainer } from '@/shared/container'
+import { useAuthActions } from '@/shared/api/auth'
+import { CustomContainer } from '@/shared/components/layout/container'
 import { useCart } from '@/shared/context/Cart/CartContext'
+import { useUser } from '@/shared/context/user/userContext'
 import { useWishList } from '@/shared/context/wishList/wishListContext'
 import { Box, Button, Flex, Input, List, Text } from '@chakra-ui/react'
 import { NavLink, useLocation } from 'react-router-dom'
@@ -24,6 +26,9 @@ import {
 import css from './navbar.module.css'
 
 export const Navbar = () => {
+  const { user } = useUser()
+  const { handleLogout } = useAuthActions()
+
   const { activeCartItems } = useCart()
   const { activeWishListItems } = useWishList()
 
@@ -57,7 +62,7 @@ export const Navbar = () => {
       h='fit-content'
       flexDir='column'
       justify='space-between'
-      borderBottom='0.5px solid '
+      borderBottom='0.03125rem solid'
       borderColor='var(--chakra-colors-primary-black)/30'
     >
       <CustomContainer
@@ -66,23 +71,28 @@ export const Navbar = () => {
         display='flex'
         flexDir='row'
         justifyContent='space-between'
-        mt={7}
-        mb={4}
+        mt='1.75rem'
+        mb='1rem'
         className={css.navbar}
         w='full'
       >
-        <Flex alignItems='center' flexDir='row' gap={48}>
+        <Flex alignItems='center' flexDir='row' gap='12rem'>
           <NavLink to='/'>
             <Text
               fontFamily='Inter'
               color='var(--chakra-colors-primary-black)'
-              fontSize='2xl'
+              fontSize='1.5rem'
               fontWeight='bold'
             >
               Exclusive
             </Text>
           </NavLink>
-          <List.Root flexDir='row' gap={12} fontSize='md' listStyleType='none'>
+          <List.Root
+            flexDir='row'
+            gap='3rem'
+            fontSize='1rem'
+            listStyleType='none'
+          >
             {navbarLinks.map((link) => {
               return (
                 <List.Item key={link.id}>
@@ -98,17 +108,17 @@ export const Navbar = () => {
             })}
           </List.Root>
         </Flex>
-        <Flex flexDir='row' gap={6}>
+        <Flex flexDir='row' gap='1.3rem'>
           <Flex alignItems='center' position='relative'>
             <Input
               type='text'
               placeholder='What are you looking for?'
-              w='248px'
-              h='38px'
+              w='15.5rem'
+              h='2.375rem'
               rounded='md'
               bg='var(--chakra-colors-primary-grey)'
-              fontSize='xs'
-              pl={5}
+              fontSize='0.75rem'
+              pl='1.25rem'
               position='relative'
               cursor='pointer'
               _focus={{
@@ -116,24 +126,25 @@ export const Navbar = () => {
                 border: 'none',
               }}
             />
-            <Button background='none' position='absolute' right={1}>
-              <SearchIcon width='24px' height='24px' />
+            <Button background='none' position='absolute' right='0.3rem'>
+              <SearchIcon width='1.5rem' height='1.5rem' />
             </Button>
           </Flex>
           {location.pathname === '/login' ||
           location.pathname === '/signup' ? null : (
-            <List.Root flexDir='row' gap={4} alignItems='center'>
+            <List.Root flexDir='row' gap='1.3rem' alignItems='center'>
               <NavLink to='/wishList'>
                 <Flex h='fit-content' position='relative'>
-                  <HeartIcon width='32px' height='32px' />
+                  <HeartIcon width='2rem' height='2rem' />
+
                   {Object.keys(activeWishListItems).length > 0 && (
                     <Box
                       position='absolute'
                       textAlign='center'
                       right={0}
-                      w='4'
-                      h='4'
-                      fontSize='xs'
+                      w='1rem'
+                      h='1rem'
+                      fontSize='0.75rem'
                       bg='var(--chakra-colors-primary-orange)'
                       rounded='full'
                       color='var(--chakra-colors-primary-white)'
@@ -152,11 +163,11 @@ export const Navbar = () => {
                     <Box
                       position='absolute'
                       textAlign='center'
-                      right={-1}
-                      top={-1}
-                      w='4'
-                      h='4'
-                      fontSize='xs'
+                      right='-0.25rem'
+                      top='-0.25rem'
+                      w='1rem'
+                      h='1rem'
+                      fontSize='0.75rem'
                       bg='var(--chakra-colors-primary-orange)'
                       rounded='full'
                       color='var(--chakra-colors-primary-white)'
@@ -166,50 +177,82 @@ export const Navbar = () => {
                   )}
                 </Flex>
               </NavLink>
-              <NavLink
-                to='/myAccount'
-                className={({ isActive }) =>
-                  isActive ? css.activeProfileIcon : ''
-                }
-              >
-                <MenuRoot
-                  open={isMenuOpen}
-                  onOpenChange={(event) => setIsMenuOpen(event.open)}
+
+              {user && (
+                <NavLink
+                  to='/myAccount'
+                  className={({ isActive }) =>
+                    isActive ? css.activeProfileIcon : ''
+                  }
                 >
-                  <MenuTrigger asChild>
-                    <Box
-                      rounded='50%'
-                      p={1}
-                      className={css.profileIcon}
-                      onMouseEnter={() => setIsMenuOpen(true)}
+                  <MenuRoot
+                    open={isMenuOpen}
+                    onOpenChange={(event) => setIsMenuOpen(event.open)}
+                  >
+                    <MenuTrigger asChild>
+                      <Box
+                        rounded='50%'
+                        p={1}
+                        className={css.profileIcon}
+                        onMouseEnter={() => setIsMenuOpen(true)}
+                      >
+                        <AccountIcon />
+                      </Box>
+                    </MenuTrigger>
+                    <MenuContent
+                      p='1rem'
+                      bg='#0000000A'
+                      backdropFilter='blur(50px)'
                     >
-                      <AccountIcon />
-                    </Box>
-                  </MenuTrigger>
-                  <MenuContent p={4} bg='#0000000A' backdropFilter='blur(50px)'>
-                    {accountMenu.map((menu) => {
-                      return (
-                        <MenuItem
-                          value={menu.name}
-                          key={menu.id}
-                          _hover={{ bg: 'none', border: 'none' }}
-                          cursor='pointer'
-                        >
-                          <Flex flexDir='row' gap={4} alignItems='center'>
-                            {menu.icon}
-                            <NavLink
-                              to={menu.url}
-                              color='var(--chakra-colors-primary-white)'
+                      {accountMenu.map((menu) => {
+                        if (menu.name === 'Logout') {
+                          return (
+                            <MenuItem
+                              value={menu.name}
+                              key={menu.id}
+                              _hover={{ bg: 'none', border: 'none' }}
+                              cursor='pointer'
                             >
-                              {menu.name}
-                            </NavLink>
-                          </Flex>
-                        </MenuItem>
-                      )
-                    })}
-                  </MenuContent>
-                </MenuRoot>
-              </NavLink>
+                              <Flex
+                                flexDir='row'
+                                gap='1rem'
+                                alignItems='center'
+                                onClick={() => handleLogout()}
+                              >
+                                {menu.icon}
+                                <Text>{menu.name}</Text>
+                              </Flex>
+                            </MenuItem>
+                          )
+                        } else {
+                          return (
+                            <MenuItem
+                              value={menu.name}
+                              key={menu.id}
+                              _hover={{ bg: 'none', border: 'none' }}
+                              cursor='pointer'
+                            >
+                              <Flex
+                                flexDir='row'
+                                gap='1rem'
+                                alignItems='center'
+                              >
+                                {menu.icon}
+                                <NavLink
+                                  to={menu.url}
+                                  color='var(--chakra-colors-primary-white)'
+                                >
+                                  {menu.name}
+                                </NavLink>
+                              </Flex>
+                            </MenuItem>
+                          )
+                        }
+                      })}
+                    </MenuContent>
+                  </MenuRoot>
+                </NavLink>
+              )}
             </List.Root>
           )}
         </Flex>
